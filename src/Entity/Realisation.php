@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ExperienceRepository;
+use App\Repository\RealisationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ExperienceRepository::class)]
-class Experience
+#[ORM\Entity(repositoryClass: RealisationRepository::class)]
+class Realisation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,10 +17,10 @@ class Experience
     private $titre;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $texte;
+    private $image;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $image;
+    private $lien;
 
     public function getId(): ?int
     {
@@ -39,18 +39,6 @@ class Experience
         return $this;
     }
 
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    public function setTexte(string $texte): self
-    {
-        $this->texte = $texte;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -59,6 +47,18 @@ class Experience
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(string $lien): self
+    {
+        $this->lien = $lien;
 
         return $this;
     }
