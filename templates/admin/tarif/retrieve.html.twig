@@ -1,0 +1,12 @@
+{% extends "admin/base.html.twig" %}
+{% block sub_title %}Tarifs{% endblock %}
+{% block content %}
+    <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
+        <div>
+            <a href="{{path('app_admin_tarif_create')}}"> Nouveau tarif </a> <br>
+
+                {% for tarif in tarifs %}
+                    <p> {{tarif.titre}} <a href="{{path('app_admin_tarif_update', {id: tarif.id}) }}"> Modifier </a> <a href="{{path('app_admin_tarif_delete', {id: tarif.id}) }}"> Supprimer </a> 
+                {% endfor %}
+        </div>
+{% endblock %}

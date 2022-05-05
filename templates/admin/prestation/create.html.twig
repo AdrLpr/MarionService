@@ -1,0 +1,7 @@
+{% extends "admin/base.html.twig" %}
+{% block sub_title %}Crée prestation{% endblock %}
+{% block content %}
+    <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
+
+    {{form(formView)}}
+{% endblock %}
