@@ -17,13 +17,15 @@ class PrestationType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => 'Titre Expérience'
+                'label' => 'Titre Expérience',
+                'required' => true
             ])
             ->add('texte', TextareaType::class, [
                 'label' => 'Texte Expérience'
             ])
             ->add('choix', ChoiceType::class, [
                 'label' => 'Choix de la page',
+                'required' => true,
                 'choices' => [
                     '---' => null,
                     'Secretariat'=> true,

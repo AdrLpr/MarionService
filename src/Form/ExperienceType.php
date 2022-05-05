@@ -18,13 +18,15 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => 'Titre Expérience'
+                'label' => 'Titre Expérience',
+                'required' => true
             ])
             ->add('texte', TextareaType::class, [
                 'label' => 'Texte Expérience'
             ])
             ->add('image', TextType::class , [ //FileType et cherche comment Upload un fichier
                 'label' => 'Image Expérience',
+                'required' => true
                 // 'constraints' => [
                 //     new File([ 
                 //         'maxSize' => '1024k',

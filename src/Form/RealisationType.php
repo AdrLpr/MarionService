@@ -15,13 +15,15 @@ class RealisationType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => 'Titre Réalisation'
+                'label' => 'Titre Réalisation',
+                'required' => true
             ])
             ->add('image', TextType::class, [ // fileType à modifier
                 'label' => 'image Réalisation'
             ])
             ->add('lien', TextType::class, [
-                'label' => 'lien Réalisation'
+                'label' => 'lien Réalisation',
+                'required' => true
             ])
             ->add('submit',SubmitType::class, [
                 'label' => 'Envoyer'

@@ -18,16 +18,19 @@ class TarifType extends AbstractType
     {
         $builder
         ->add('titre', TextType::class, [
-            'label' => 'Titre Tarif'
+            'label' => 'Titre Tarif',
+            'required' => true
         ])
         ->add('prix', MoneyType::class, [
-            'label' => 'Prix'
+            'label' => 'Prix',
+            'required' => true
         ])
         ->add('texte', TextareaType::class, [
             'label' => 'Texte Tarif'
         ])
         ->add('choix', ChoiceType::class, [
             'label' => 'Choix de la page',
+            'required' => true,
             'choices' => [
                 '---' => null,
                 'Secretariat'=> true,
