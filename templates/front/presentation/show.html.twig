@@ -1,0 +1,24 @@
+{% extends "front/base.html.twig" %}
+
+    {% block sub_title %}Présentation{% endblock %}
+
+    {% block content %}
+    <h2> Présentation </h2>
+        <h3>Mes Expériences</h3>
+             {% for experience in experiences %}
+                 <div class="exp" style="border: black 1px solid">
+                    <img src="{{experience.image}}">
+                    <h4> {{experience.titre}} </h4>
+                    <p> {{experience.texte}} </p>
+                 </div>
+             {% endfor %}
+
+        <h3> Mes Réalisations </h3>
+            {% for realisation in realisations %}
+                <div class="rea" style="border: red 1px solid">
+                    <h4> {{realisation.titre}} </h4>
+                    <img src="{{realisation.image}}">
+                    <a href="{{realisation.lien}}">Lien vers le site </a> 
+                 </div>
+            {% endfor %}
+    {% endblock %}

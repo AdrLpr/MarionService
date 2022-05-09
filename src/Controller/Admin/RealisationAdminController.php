@@ -6,12 +6,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Realisation;
 use App\Form\RealisationType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\RealisationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//#[IsGranted('ROLE_ADMIN')]
 class RealisationAdminController extends AbstractController
 {
     #[Route("/admin/realisation", name:'app_admin_realisation_retrieve')]

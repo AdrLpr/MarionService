@@ -75,4 +75,14 @@ class TarifRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByChoix($choice) //Permet de choisir les valeurs d'une des 2 
+    {
+        return $this->createQueryBuilder('qb')
+        ->andWhere('qb.choix = :val')
+        ->setParameter('val', $choice)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
 }

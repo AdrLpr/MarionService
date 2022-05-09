@@ -1,0 +1,13 @@
+{% extends "front/base.html.twig" %}
+
+    {% block sub_title %}Secrétariat{% endblock %}
+
+    {% block content %}
+    <h2> Secrétariat - Préstations </h2>
+        {% for prestation in prestations %}
+            <div class="secre" style="border: black 1px solid">
+                <h3>{{prestation.titre}} </h3>
+                <p>{{prestation.texte}} </p>
+            </div>
+        {% endfor %}
+    {% endblock %}

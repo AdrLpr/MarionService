@@ -1,0 +1,13 @@
+{% extends "front/base.html.twig" %}
+
+    {% block sub_title %}Site Web{% endblock %}
+
+    {% block content %}
+    <h2> Site Web - Tarifs </h2>
+    {% for tarif in tarifs %}
+            <div class="site" style="border: black 1px solid">
+                <h3>{{tarif.titre}} </h3>
+                <p>{{tarif.texte}} {{tarif.prix}}€</p>
+            </div>
+        {% endfor %}
+    {% endblock %}

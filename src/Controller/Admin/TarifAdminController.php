@@ -6,12 +6,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Tarif;
 use App\Form\TarifType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\TarifRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//#[IsGranted('ROLE_ADMIN')]
 class TarifAdminController extends AbstractController
 {
     #[Route('/admin/tarif', name:'app_admin_tarif_retrieve')]

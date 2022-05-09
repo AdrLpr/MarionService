@@ -7,11 +7,13 @@ namespace App\Controller\Admin;
 use App\Entity\Prestation;
 use App\Form\PrestationType;
 use App\Repository\PrestationRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// #[IsGranted('ROLE_ADMIN')]
 class PrestationAdminController extends AbstractController
 {
     #[Route('/admin/prestation', name:'app_admin_prestation_retrieve')]

@@ -1,9 +1,9 @@
 {% extends "admin/base.html.twig" %}
-{% block sub_title %}Présentation{% endblock %}
+{% block sub_title %}Préstation{% endblock %}
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
         <div>
-            <a href="{{path('app_admin_prestation_create')}}"> Nouvelle Présentation </a> <br>
+            <a href="{{path('app_admin_prestation_create')}}"> Nouvelle Préstation </a> <br>
 
                 {% for prestation in prestations %}
                     <p> {{prestation.titre}} <a href="{{path('app_admin_prestation_update', {id: prestation.id}) }}"> Modifier </a> <a href="{{path('app_admin_prestation_delete', {id: prestation.id}) }}"> Supprimer </a> 
