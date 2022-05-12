@@ -1,15 +1,27 @@
 <div class="entete-grp">
     <a href="{{path('app_home_home')}}">
         <div class="entete-content">
-            <img src="/logo.png">
+            <img src="/logo1-100.png">
             <h1> Marion Services </h1>
         </div>
     </a>
 </div>
 
 <div class="entete-grp">
-    <div class="entete-content">
-    <h3>Profil</h3>
+    {% if app.user %}
+    
+        <div class="entete-content">
+            <a href="{{path('app_profil')}}">
+                <h3>Profil</h3>
+            </a>
+        </div>        
+    {% else %}
+        <div class="entete-content">
+            <a href="{{path('app_login')}}">
+                <h3>Se connecter</h3>
+            </a>     
+        </div>        
+    {% endif %}
     </div>
 </div>
 

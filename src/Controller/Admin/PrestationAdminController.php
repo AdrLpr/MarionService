@@ -13,13 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//limite l'accès à la page aux admins
 // #[IsGranted('ROLE_ADMIN')]
 class PrestationAdminController extends AbstractController
 {
     #[Route('/admin/prestation', name:'app_admin_prestation_retrieve')]
      public function retrieve(PrestationRepository $repository): Response
      {
-         $prestations=$repository->findAll();
+         $prestations=$repository->findAll();//retrieve
 
          return $this->render('admin/prestation/retrieve.html.twig', [
              'prestations'=>$prestations

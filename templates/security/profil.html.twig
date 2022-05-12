@@ -1,0 +1,11 @@
+{% extends 'front/base.html.twig' %}
+
+{% block sub_title %}Mon-Profil{% endblock %}
+
+{% block content %}
+    <h3> BIENVENUE ! {{user.lastName}} </h3>
+    
+    <a href='{{ path('app_profilUpdate') }}'><i class="fa-solid fa-pen-to-square"></i></a>
+
+
+{% endblock %}

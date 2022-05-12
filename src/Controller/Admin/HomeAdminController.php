@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//limite l'accès à la page aux admins
 // #[IsGranted('ROLE_ADMIN')]
 class HomeAdminController extends AbstractController
 {

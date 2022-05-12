@@ -1,0 +1,160 @@
+/*
+============================
+Définition des Variables CSS
+============================
+*/
+:root {
+    --color-white: #efefef;
+    --color-black: #363636;
+    --color-green: #cef9d0;
+    --color-red: #f9cece;
+    --color-grey: #dddddd;
+    --base-font-size: 18px;
+  }
+
+  /*
+============================================
+Définition du style des éléments principaux:
+html, body, h* etc ...
+============================================
+*/
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "";
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--base-font-size);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1,
+.text-display {
+    font-family: "";
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "";
+} 
+
+.container {
+    flex-grow: 2;
+    align-self: center;
+    width: 1024px;
+    padding-bottom: 1.6rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+      width: 100%;
+    }
+}
+
+/*
+====================
+Définition du footer
+====================
+*/
+
+
+/*
+==============================
+Définition des class du header
+==============================
+*/
+/*
+==============================
+Définition des class du header
+==============================
+*/
+.header {
+    width: 100%;
+    
+}
+/*
+-Entete-
+*/
+.header .entete {
+    display: flex;
+  justify-content: space-between;
+  background-color: var(--color-red);
+  backdrop-filter: blur(10);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+
+.entete > .entete-grp {
+    display: flex;
+}
+
+.entete .entete-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    color: var(--color-white);
+    font-size: 1.1rem;
+    text-decoration: none;
+    outline: none;
+
+}
+
+/*
+-Banner-
+*/
+
+/*
+-NavBar-
+*/
+.header .navbar {
+      display: flex;
+      justify-content: space-around;
+    background-color: rgba(54, 54, 54, 0.7);
+    backdrop-filter: blur(10);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+.navbar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+
+    color: var(--color-white);
+    font-size: 1.1rem;
+    text-decoration: none;
+    outline: none;
+}
+
+/*
+/*
+===================================
+Design des boutons de l'application
+===================================
+*/
+
+/*
+================================
+Design des liens de listes
+================================
+*/
+
+.list-admin
+{
+    display: flex;
+    flex-direction: column;
+}

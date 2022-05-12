@@ -13,13 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+//limite l'accès à la page aux admins
 //#[IsGranted('ROLE_ADMIN')]
 class ExperienceAdminController extends AbstractController
 {
     #[Route('/admin/experience', name:'app_admin_experience_retrieve')]
      public function retrieve(ExperienceRepository $repository): Response
      {
-         $experiences=$repository->findAll();
+         $experiences=$repository->findAll();//retrieve all elements
 
          return $this->render('admin/experience/retrieve.html.twig', [
              'experiences'=>$experiences
@@ -53,7 +54,7 @@ class ExperienceAdminController extends AbstractController
             return new Response("Cette expérience n'existe pas", 404);
         }
 
-        $form = $this->createForm(ExperienceType::class, $experience);
+        $form = $this->createForm(ExperienceType::class, $experience);//affiche les valeurs déjà existantes dans le formulaire
 
         $form->handleRequest($request);
 

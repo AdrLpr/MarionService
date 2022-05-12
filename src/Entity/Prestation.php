@@ -16,11 +16,11 @@ class Prestation
     #[ORM\Column(type: 'string', length: 255)]
     private $titre;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $texte;
-
     #[ORM\Column(type: 'boolean')]
     private $choix;
+
+    #[ORM\Column(type: 'array')]
+    private $texte = [];
 
     public function getId(): ?int
     {
@@ -39,17 +39,6 @@ class Prestation
         return $this;
     }
 
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    public function setTexte(string $texte): self
-    {
-        $this->texte = $texte;
-
-        return $this;
-    }
 
     public function getChoix(): ?bool
     {
@@ -59,6 +48,18 @@ class Prestation
     public function setChoix(bool $choix): self
     {
         $this->choix = $choix;
+
+        return $this;
+    }
+
+    public function getTexte(): ?array
+    {
+        return $this->texte;
+    }
+
+    public function setTexte(array $texte): self
+    {
+        $this->texte = $texte;
 
         return $this;
     }

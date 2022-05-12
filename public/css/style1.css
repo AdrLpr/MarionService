@@ -4,11 +4,11 @@ Définition des Variables CSS
 ============================
 */
 :root {
-    --color-white: #efefef;
-    --color-black: #363636;
-    --color-green: #cef9d0;
-    --color-red: #f9cece;
-    --color-grey: #dddddd;
+    --color-white: #f5efe6;
+    --color-marron: #c49d83 ;
+    --color-brown:#BDA18A;
+    --color-red: #E8D5CC;
+    --color-grey: #D5CABC;
     --base-font-size: 18px;
   }
 
@@ -22,7 +22,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: "";
+  font-family: "Karla";
   background-color: var(--color-white);
   color: var(--color-black);
   font-size: var(--base-font-size);
@@ -36,7 +36,7 @@ body {
 
 h1,
 .text-display {
-    font-family: "";
+    font-family: "Karla";
 }
 
 h2,
@@ -44,8 +44,23 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "";
+    font-family: "Karla";
 } 
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.textLink {
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--color-brown);
+}
+
+:active.textLink {
+    color: darkslategray;
+}
 
 .container {
     flex-grow: 2;
@@ -65,7 +80,17 @@ h6 {
 Définition du footer
 ====================
 */
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-marron);
+    }
 
+    .footer .footer-content {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        font-size: medium;
+    }
 
 /*
 ==============================
@@ -87,7 +112,7 @@ Définition des class du header
 .header .entete {
     display: flex;
   justify-content: space-between;
-  background-color: rgba(206, 97, 97, 0.7);
+  background-color: var(--color-white);
   backdrop-filter: blur(10);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 }
@@ -103,11 +128,10 @@ Définition des class du header
     cursor: pointer;
     padding-left: 1.2rem;
     padding-right: 1.2rem;
-    color: var(--color-white);
+    color: black;
     font-size: 1.1rem;
     text-decoration: none;
     outline: none;
-
 }
 
 /*
@@ -120,7 +144,7 @@ Définition des class du header
 .header .navbar {
       display: flex;
       justify-content: space-around;
-    background-color: rgba(54, 54, 54, 0.7);
+    background-color: var(--color-marron);
     backdrop-filter: blur(10);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 }
@@ -153,8 +177,57 @@ Design des liens de listes
 ================================
 */
 
+:hover.navLink
+{
+    background-color: #a8846d;
+}
+
 .list-admin
 {
     display: flex;
     flex-direction: column;
+}
+
+.linkAdmin
+{
+    padding: 1%;
+    margin-bottom: 1%;
+    width: 20%;
+    border-radius: 3%;
+    background-color: var(--color-red);
+}
+
+:hover.linkAdmin
+{
+    background-color: var(--color-marron);
+    transition: .3s;
+}
+
+/*
+================================
+Elements
+================================
+*/
+
+section
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.elementBox
+{
+    padding-top: 1%;
+    display: flex;
+    background-color: var(--color-red);
+    width: 49%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.texte
+{
+    text-align:center;
 }

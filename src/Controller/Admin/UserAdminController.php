@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\Security\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,7 +39,7 @@ class UserAdminController extends AbstractController
             $user = $form->getData();
             $plainpassword= $user->getPassword();
             
-            $hassedpassword = $passwordHasher->hashPassword(
+            $hassedpassword = $passwordHasher->hashPassword(//hash le mdp pour le crypté
                 $user,
                 $plainpassword
             );
@@ -57,7 +57,7 @@ class UserAdminController extends AbstractController
     }
 
     #[Route('/admin/user/{id}/update', name:"app_admin_user_update")]
-    public function update(User $user,userRepository $repository, Request $request ): Response
+    public function update(User $user,userRepository $repository, UserPasswordHasherInterface $passwordHasher, Request $request ): Response
     {
 
         if (!$user){
@@ -68,10 +68,21 @@ class UserAdminController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $repository->add($form->getData());
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $user = $form->getData();
+            $plainpassword= $user->getPassword();
+            
+            $hassedpassword = $passwordHasher->hashPassword(//hash le mdp pour le crypté
+                $user,
+                $plainpassword
+            );
 
-            return $this->redirectToRoute("app_admin_user_retrieve");
+            $user->setPassword($hassedpassword);
+
+            $repository->add($user);
+
+            return $this->redirectToRoute('app_admin_user_retrieve');
         }
 
         $formView = $form->createView();
@@ -82,7 +93,7 @@ class UserAdminController extends AbstractController
     }
 
     #[Route('/admin/user/{id}/delete', name:"app_admin_user_delete")]
-    public function delete(User $user,userRepository $repository, Request $request ): Response
+    public function delete(User $user,userRepository $repository): Response
     {
 
         if (!$user){

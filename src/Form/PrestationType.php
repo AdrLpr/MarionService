@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Prestation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,11 +18,17 @@ class PrestationType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label' => 'Titre Expérience',
+                'label' => 'Titre Préstation',
                 'required' => true
             ])
-            ->add('texte', TextareaType::class, [
-                'label' => 'Texte Expérience'
+            ->add('texte', CollectionType::class, [
+                'label' => 'Texte Préstation',
+                'entry_type'=>TextareaType::class,
+                    'entry_options' =>
+                    [ 'attr' => ['class' => "email_box"],
+                ],
+                'allow_add'=> true,
+                'prototype'=> true
             ])
             ->add('choix', ChoiceType::class, [
                 'label' => 'Choix de la page',

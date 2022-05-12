@@ -5,20 +5,24 @@
     {% block content %}
     <h2> Présentation </h2>
         <h3>Mes Expériences</h3>
+            <section>
              {% for experience in experiences %}
-                 <div class="exp" style="border: black 1px solid">
+                 <div class="exp elementBox" style="border: black 1px solid">
                     <img src="{{experience.image}}">
                     <h4> {{experience.titre}} </h4>
-                    <p> {{experience.texte}} </p>
+                    <p class="texte"> {{experience.texte}} </p>
                  </div>
              {% endfor %}
-
+            </section>
+            
         <h3> Mes Réalisations </h3>
+            <section>
             {% for realisation in realisations %}
-                <div class="rea" style="border: red 1px solid">
+                <div class="rea elementBox" style="border: red 1px solid">
                     <h4> {{realisation.titre}} </h4>
                     <img src="{{realisation.image}}">
                     <a href="{{realisation.lien}}">Lien vers le site </a> 
                  </div>
             {% endfor %}
+            </section>
     {% endblock %}
