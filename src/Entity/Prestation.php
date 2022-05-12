@@ -19,8 +19,8 @@ class Prestation
     #[ORM\Column(type: 'boolean')]
     private $choix;
 
-    #[ORM\Column(type: 'array')]
-    private $texte = [];
+    #[ORM\Column(type: 'text')]
+    private $texte;
 
     public function getId(): ?int
     {
@@ -52,15 +52,16 @@ class Prestation
         return $this;
     }
 
-    public function getTexte(): ?array
+    public function getTexte(): ?string
     {
         return $this->texte;
     }
 
-    public function setTexte(array $texte): self
+    public function setTexte(string $texte): self
     {
         $this->texte = $texte;
 
         return $this;
     }
+
 }

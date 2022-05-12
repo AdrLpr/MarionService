@@ -3,15 +3,7 @@
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
 
-    {{form_start(formView)}}
+    {{form(formView)}}
 
-        <ul>
-        {% for textField in formView.texte %}
-            <li>
-            {{ form_errors(emailField) }}
-            {{ form_widget(emailField) }}
-            </li>
-        {% endfor %}
-        </ul>
-    {{form_end(formView)}}
+    
 {% endblock %}
