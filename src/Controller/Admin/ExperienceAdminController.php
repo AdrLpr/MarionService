@@ -7,11 +7,14 @@ namespace App\Controller\Admin;
 use App\Entity\Experience;
 use App\Form\ExperienceType;
 use App\Repository\ExperienceRepository;
+use FFI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 //limite l'accès à la page aux admins
 //#[IsGranted('ROLE_ADMIN')]
@@ -28,13 +31,39 @@ class ExperienceAdminController extends AbstractController
      }
 
      #[Route('/admin/experience/create', name:'app_admin_experience_create')]
-     public function create(ExperienceRepository $repository, Request $request): Response
+     public function create(ExperienceRepository $repository, Request $request, SluggerInterface $slugger): Response
      {
-        $form = $this->createForm(ExperienceType::class);
+        $experience = new Experience();
+        $form = $this->createForm(ExperienceType::class, $experience);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            //condition néccésaire parce l'input n'est pas required
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // néccésaire pour inclure de manière sécurisé le nom du fichier dans l'url
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+            
+
+            try {
+                $imageFile->move(
+                    $this->getParameter('img_dir'),
+                    $newFilename
+                );
+            } catch (FileException $e)  
+            {
+                // si il y a une erreur
+            }
+            
+            $experience->setImage($newFilename);
+
+            }
+
             $repository->add($form->getData());
             
             return $this->redirectToRoute("app_admin_experience_retrieve");

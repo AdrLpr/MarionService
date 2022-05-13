@@ -6,7 +6,7 @@
             <a href="{{path('app_admin_experience_create')}}"> Nouvelle Expérience </a> <br>
 
                 {% for experience in experiences %}
-                    <p> <img src="{{experience.image}}"> {{experience.titre}} <a href="{{path('app_admin_experience_update', {id: experience.id}) }}"> Modifier </a> <a href="{{path('app_admin_experience_delete', {id: experience.id}) }}"> Supprimer </a> 
+                    <p> <img src="/public/upload/{{experience.image}}"> {{experience.titre}} <a href="{{path('app_admin_experience_update', {id: experience.id}) }}"> Modifier </a> <a href="{{path('app_admin_experience_delete', {id: experience.id}) }}"> Supprimer </a> 
                 {% endfor %}
         </div>
 {% endblock %}

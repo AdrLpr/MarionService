@@ -24,19 +24,16 @@ class ExperienceType extends AbstractType
             ->add('texte', TextareaType::class, [
                 'label' => 'Texte Expérience'
             ])
-            ->add('image', TextType::class , [ //FileType et cherche comment Upload un fichier
+            ->add('image', FileType::class , [
                 'label' => 'Image Expérience',
-                'required' => true
-                // 'constraints' => [
-                //     new File([ 
-                //         'maxSize' => '1024k',
-                //         // 'mimeTypes' => [
-                //         //     'application/png',
-                //         //     'application/x-pdf',
-                //         // ],
-                //         'mimeTypesMessage' => 'Please upload a valid document',
-                //     ])
-                // ],
+                'mapped'=>false,
+                'required' => false,
+                'constraints' => [
+                    new File ([
+                        'maxSize'=> '1024k',
+                        'mimeTypesMessage'=>'Mauvais type',
+                    ])
+                ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer'
