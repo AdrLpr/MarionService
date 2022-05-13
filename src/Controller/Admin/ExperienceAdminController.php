@@ -76,27 +76,51 @@ class ExperienceAdminController extends AbstractController
      }
 
      #[Route("/admin/experience/{id}/update", name:'app_admin_experience_update')]
-     public function update(ExperienceRepository $repository, Request $request, Experience $experience ): Response
+     public function update(ExperienceRepository $repository, Request $request, Experience $experience, SluggerInterface $slugger ): Response
      {
          
         if (!$experience){
             return new Response("Cette expérience n'existe pas", 404);
         }
 
-        $form = $this->createForm(ExperienceType::class, $experience);//affiche les valeurs déjà existantes dans le formulaire
+        $form = $this->createForm(ExperienceType::class, $experience);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()){
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            //condition néccésaire parce l'input n'est pas required
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // néccésaire pour inclure de manière sécurisé le nom du fichier dans l'url
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+            
+
+            try {
+                $imageFile->move(
+                    $this->getParameter('img_dir'),
+                    $newFilename
+                );
+            } catch (FileException $e)  
+            {
+                // si il y a une erreur
+            }
+            
+            $experience->setImage($newFilename);
+
+            }
+
             $repository->add($form->getData());
             
             return $this->redirectToRoute("app_admin_experience_retrieve");
         }
-        $formView = $form->createView();
 
-        return $this->render('admin/experience/update.html.twig', [
-            'formView' => $formView,
+        $formView = $form->createView();
+        return $this->render('admin/experience/create.html.twig', [
+            'formView'=>$formView
         ]);
      }
 

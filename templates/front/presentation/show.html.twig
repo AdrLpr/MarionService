@@ -8,7 +8,7 @@
             <section>
              {% for experience in experiences %}
                  <div class="exp elementBox" style="border: black 1px solid">
-                    <img src="{{experience.image}}">
+                    <img class="smlPic" src="{{asset('/uploads/' ~ experience.image)}}"> 
                     <h4> {{experience.titre}} </h4>
                     <p class="texte"> {{experience.texte}} </p>
                  </div>
@@ -20,7 +20,7 @@
             {% for realisation in realisations %}
                 <div class="rea elementBox" style="border: red 1px solid">
                     <h4> {{realisation.titre}} </h4>
-                    <img src="{{realisation.image}}">
+                    <img class="smlPic" src="{{asset('/uploads/' ~ realisation.image)}}"> 
                     <a href="{{realisation.lien}}">Lien vers le site </a> 
                  </div>
             {% endfor %}

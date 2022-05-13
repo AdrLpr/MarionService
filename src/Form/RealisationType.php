@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\Realisation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class RealisationType extends AbstractType
 {
@@ -18,8 +20,16 @@ class RealisationType extends AbstractType
                 'label' => 'Titre Réalisation',
                 'required' => true
             ])
-            ->add('image', TextType::class, [ // fileType à modifier
-                'label' => 'image Réalisation'
+            ->add('image', FileType::class , [
+                'label' => 'Image Réalisation',
+                'mapped'=>false,
+                'required' => false,
+                'constraints' => [
+                    new File ([
+                        'maxSize'=> '1024k',
+                        'mimeTypesMessage'=>'Mauvais type',
+                    ])
+                ],
             ])
             ->add('lien', TextType::class, [
                 'label' => 'lien Réalisation',

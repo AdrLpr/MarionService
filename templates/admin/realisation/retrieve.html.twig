@@ -6,7 +6,7 @@
             <a href="{{path('app_admin_realisation_create')}}"> Nouvelle Réalisation </a> <br>
 
                 {% for realisation in realisations %}
-                    <p> <img src="{{realisation.image}}"> {{realisation.titre}} <a href="{{path('app_admin_realisation_update', {id: realisation.id}) }}"> Modifier </a> <a href="{{path('app_admin_realisation_delete', {id: realisation.id}) }}"> Supprimer </a> 
+                    <p> <img class="smlPic" src="{{asset('/uploads/' ~ realisation.image)}}">  {{realisation.titre}} <a href="{{path('app_admin_realisation_update', {id: realisation.id}) }}"> Modifier </a> <a href="{{path('app_admin_realisation_delete', {id: realisation.id}) }}"> Supprimer </a> 
                 {% endfor %}
         </div>
 {% endblock %}
