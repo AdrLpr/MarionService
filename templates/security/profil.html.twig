@@ -5,7 +5,38 @@
 {% block content %}
     <h3> BIENVENUE ! {{user.lastName}} </h3>
     
-    <a href='{{ path('app_profilUpdate') }}'><i class="fa-solid fa-pen-to-square"></i></a>
+    <a href='{{ path('app_profilUpdate') }}'>Modifier <i class="fa-solid fa-pen-to-square"></i></a>
+    <a href='{{ path('app_logout') }}'>|| Se déconnecter <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+    
+    <section>
+    <table id="profil">
+        <tr>
+            
+            <th> Email : </th>
+            <td> {{app.user.email}} </td>
+        </tr>
+        <tr>
+            <th> Nom : </th>
+            <td> {{app.user.lastName}} </td>
+        </tr>
+        <tr>
+            <th> Prénom : </th>
+            <td> {% if app.user.firstName %}
+                    {{app.user.firstName}}
+                {% else %}
+                    N/A    
+                {% endif %} </td>
+        </tr>
+        <tr>
+            <th> Téléphone : </th>
+            <td> {% if app.user.tel %}
+                    {{app.user.tel}}
+                {% else %}
+                    N/A    
+                {% endif %} </td>
+        </tr>
+    </table>
 
+    </section>
 
 {% endblock %}

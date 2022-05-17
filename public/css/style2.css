@@ -37,6 +37,7 @@ body {
 h1,
 .text-display {
     font-family: "Karla";
+    padding-left: 1rem;
 }
 
 h2,
@@ -55,7 +56,7 @@ a {
 .textLink {
     font-weight: bold;
     text-decoration: underline;
-    color: var(--color-brown);
+    color: var(--color-grey);
 }
 
 :active.textLink {
@@ -68,6 +69,25 @@ a {
     width: 1024px;
     padding-bottom: 1.6rem;
 }
+
+section {
+    background-color: var(--color-marron);
+    display: flex;
+    justify-content: space-around;
+    padding: 1%;
+    flex-wrap: wrap;
+}
+
+.column
+{
+    flex-direction: column;
+}
+
+.contactForm {
+    background-color: var(--color-grey);
+}
+
+
 
 @media screen and (max-width: 1024px) {
     .container {
@@ -143,8 +163,72 @@ Définition des class du header
 */
 
 #nav {
-    list-style-type: none;
-    display: flex;
+    list-style: none inside;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#nav li {
+    display: block;
+    position: relative;
+    float: left;
+    background: var(--color-marron);
+    
+}
+
+#nav li a {
+    display: block;
+    padding: 0;
+    text-decoration: none;
+    width: 13rem;
+    padding-top: .3rem;
+    padding-bottom: 0.3rem;
+    line-height: 35px;
+    
+    color: #ffffff;
+
+}
+
+#nav li li a {
+    font-size: 80%;
+}
+
+/* smaller font size for sub menu items */
+
+#nav li:hover {
+    background-color: #a8846d;
+}
+
+/* highlights current hovered list item and the parent list items when hovering over sub menues */
+
+#nav ul {
+    position: absolute;
+    padding: 0;
+    left: 0;
+    display: none;
+    /* hides sublists */
+}
+
+#nav li:hover ul ul {
+    display: none;
+}
+
+/* hides sub-sublists */
+
+#nav li:hover ul {
+    display: block;
+}
+
+/* shows sublist on hover */
+
+#nav li li:hover ul {
+    display: block;
+    /* shows sub-sublist on hover */
+    margin-left: 200px;
+    /* this should be the same width as the parent list item */
+    margin-top: -35px;
+    /* aligns top of sub menu with top of list item */
 }
 .header .navbar {
       display: flex;
@@ -172,15 +256,61 @@ Définition des class du header
 /*
 /*
 ===================================
-Design des boutons de l'application
+Design des Input
 ===================================
 */
 
+.contactForm>p
+{
+    padding: 1%;
+    margin: 0;
+    text-align: center;
+}
+.contactForm>p>a
+{
+    color: var(--color-white);
+}
+
+
+input, select, textarea {
+    width: 100%; /* Full width */
+    padding: 2%; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5%; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: .01%;/* Add a top margin */
+    margin-bottom: .01%; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+.submit {
+    background-color: var(--color-red);
+    color: black;
+    padding: 5% 6%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+:hover.submit{
+    background-color:#d1bcb3;
+}
 /*
 ================================
 Design des liens de listes
 ================================
 */
+
+.listBox
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.listElement
+{
+    display: flex;
+}
 
 :hover.navLink
 {
@@ -199,13 +329,13 @@ Design des liens de listes
     margin-bottom: 1%;
     width: 20%;
     border-radius: 3%;
+    transition: .3s;
     background-color: var(--color-red);
 }
 
 :hover.linkAdmin
 {
     background-color: var(--color-marron);
-    transition: .3s;
 }
 
 /*
@@ -214,20 +344,30 @@ Elements
 ================================
 */
 
+.btn
+{
+    padding: 2%;
+    background-color: var(--color-red);
+    text-align: center;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+:hover.btn
+{
+    background-color:#d1beb5;
+}
+
 .smlPic
 {
     height: 50px;
     width: 50px;
 }
 
-section
-{
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .elementBox
 {
+    margin-top: 1%;
+    margin-bottom: 1%;
     padding-top: 1%;
     display: flex;
     background-color: var(--color-red);
@@ -236,9 +376,16 @@ section
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    border-radius: 4%;
 }
 
 .texte
 {
     text-align:center;
+}
+
+#profil
+{
+    background-color: var(--color-red);
+    padding: 2%;
 }

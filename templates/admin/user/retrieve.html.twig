@@ -2,11 +2,24 @@
 {% block sub_title %}Users{% endblock %}
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
-        <div>
-            <a href="{{path('app_admin_user_create')}}"> Nouveau User </a> <br>
-
+        <section class="column">
+            <a class="btn" href="{{path('app_admin_user_create')}}"> Nouveau User </a> <br>
+                <div class="listBox column">
                 {% for user in users %}
-                    <p> <img src="{{user.image}}"> {{user.titre}} <a href="{{path('app_admin_user_update', {id: user.id}) }}"> Modifier </a> <a href="{{path('app_admin_user_delete', {id: user.id}) }}"> Supprimer </a> 
+                <hr class="listLine">
+                <div class="listBox">
+                    <div class="listElement">
+                    {{user.email}}
+                    {{user.lastName}}
+                    </div> 
+                    <div class="listAction">
+                        <a href="{{path('app_admin_user_update', {id: user.id}) }}"> Modifier 
+                        <i class="fa-solid fa-pen-to-square"></i></a>  
+                        <a href="{{path('app_admin_user_delete', {id: user.id}) }}"> Supprimer 
+                        <i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
                 {% endfor %}
-        </div>
+                </div>
+        </section>
 {% endblock %}

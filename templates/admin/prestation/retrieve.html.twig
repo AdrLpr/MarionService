@@ -2,11 +2,24 @@
 {% block sub_title %}Préstation{% endblock %}
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
-        <div>
-            <a href="{{path('app_admin_prestation_create')}}"> Nouvelle Préstation </a> <br>
-
+        <section class="column">
+            <a class="btn" href="{{path('app_admin_prestation_create')}}"> Nouvelle Préstation </a>
+                <div class="listBox column">
                 {% for prestation in prestations %}
-                    <p> {{prestation.titre}} <a href="{{path('app_admin_prestation_update', {id: prestation.id}) }}"> Modifier </a> <a href="{{path('app_admin_prestation_delete', {id: prestation.id}) }}"> Supprimer </a> 
+                <hr class="listLine">
+                <div class="listBox">
+                    <div class="listElement">
+                        <p>{{prestation.titre}}</p> 
+                    </div>
+
+                    <div class="listAction">
+                        <a href="{{path('app_admin_prestation_update', {id: prestation.id}) }}"> Modifier 
+                        <i class="fa-solid fa-pen-to-square"></i></a> 
+                        <a href="{{path('app_admin_prestation_delete', {id: prestation.id}) }}"> Supprimer 
+                        <i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
                 {% endfor %}
-        </div>
+                </div>
+        </section>
 {% endblock %}

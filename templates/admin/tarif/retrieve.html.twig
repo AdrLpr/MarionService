@@ -2,11 +2,24 @@
 {% block sub_title %}Tarifs{% endblock %}
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
-        <div>
-            <a href="{{path('app_admin_tarif_create')}}"> Nouveau tarif </a> <br>
-
+        <section class="column">
+            <a class="btn" href="{{path('app_admin_tarif_create')}}"> Nouveau tarif </a>
+                <div class="listBox column">
                 {% for tarif in tarifs %}
-                    <p> {{tarif.titre}} <a href="{{path('app_admin_tarif_update', {id: tarif.id}) }}"> Modifier </a> <a href="{{path('app_admin_tarif_delete', {id: tarif.id}) }}"> Supprimer </a> 
+                <hr class="listLine">
+                <div class="listBox">
+                    <div class="listElement">
+                    {{tarif.titre}}
+                    </div> 
+
+                    <div class="listAction">
+                        <a href="{{path('app_admin_tarif_update', {id: tarif.id}) }}"> Modifier 
+                        <i class="fa-solid fa-pen-to-square"></i></a> 
+                        <a href="{{path('app_admin_tarif_delete', {id: tarif.id}) }}"> Supprimer 
+                        <i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div> 
                 {% endfor %}
-        </div>
+                </div>
+        </section>
 {% endblock %}

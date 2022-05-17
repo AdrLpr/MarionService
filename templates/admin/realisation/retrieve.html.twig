@@ -2,11 +2,25 @@
 {% block sub_title %}Réalisation{% endblock %}
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
-        <div>
-            <a href="{{path('app_admin_realisation_create')}}"> Nouvelle Réalisation </a> <br>
-
+        <section class="column">
+            <a class="btn" href="{{path('app_admin_realisation_create')}}"> Nouvelle Réalisation </a> <br>
+                <div class="listBox column">
                 {% for realisation in realisations %}
-                    <p> <img class="smlPic" src="{{asset('/uploads/' ~ realisation.image)}}">  {{realisation.titre}} <a href="{{path('app_admin_realisation_update', {id: realisation.id}) }}"> Modifier </a> <a href="{{path('app_admin_realisation_delete', {id: realisation.id}) }}"> Supprimer </a> 
+                <hr class="listLine">
+                <div class="listBox">
+                    <div class="listElement">
+                    <img class="smlPic" src="{{asset('/uploads/' ~ realisation.image)}}">
+                      {{realisation.titre}} 
+                    </div>    
+
+                    <div class="listAction">
+                      <a href="{{path('app_admin_realisation_update', {id: realisation.id}) }}"> Modifier 
+                      <i class="fa-solid fa-pen-to-square"></i></a> 
+                      <a href="{{path('app_admin_realisation_delete', {id: realisation.id}) }}"> Supprimer 
+                      <i class="fa-solid fa-trash-can"></i></a> 
+                    </div>
+                </div>
                 {% endfor %}
-        </div>
+                </div>
+        </section>
 {% endblock %}

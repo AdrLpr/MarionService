@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,10 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_front_contact')]
     public function show(Request $request, MailerInterface $mailer): Response
     {
-        $form = $this->createForm(ContactType::class);
+        //récup l'user connecté
+        /** @var User */
+        $user= $this->getUser();
+        $form = $this->createForm(ContactType::class, $user);
         $form->handleRequest($request);
 
 

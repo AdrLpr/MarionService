@@ -3,28 +3,45 @@
     {% block sub_title %}Contact{% endblock %}
 
     {% block content %}
-    <div class="col-sm-12">
-    <div class="form-group">
+    <h2> Contact</h2>
+    <div class="contactForm">
+
+    {% if app.user %}
+
+
+    {% else %}
+
+    <p>Pour une comunication plus simple, <a  class="textLink" href="{{path('app_login')}}">connectez-vous !</a> </p>   
+    
+    {% endif %}
+    <section>
+
 {{ form_start(form) }}
-    {{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
 
 
-</div>
-<div class="form-group">
+
+
     {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
 
-</div>
-<div class="form-group">
+
+
     {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
 
-</div>
 
-<div class="form-group">
-    <input type="submit" value="Send" class="btn btn-primary py-3 px-5">
-</div>
+
+
+    <input type="submit" value="Envoyer" class="submit">
+
 {{ form_end(form) }}
-</div>
 
-</div>
+
+</section>
+
+    
+    <p style="font-size:70%">
+    Les informations recueillies font l'objet d'un traitement informatique destiné à prendre contact avec la personne qui aura laissé ses coordonnées. Le destinataire des données est MARION SERVICES uniquement.
+    </p>
+    </div>
     
     {% endblock %}

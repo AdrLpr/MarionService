@@ -75,7 +75,19 @@ section {
     display: flex;
     justify-content: space-around;
     padding: 1%;
+    flex-wrap: wrap;
 }
+
+.column
+{
+    flex-direction: column;
+}
+
+.contactForm {
+    background-color: var(--color-grey);
+}
+
+
 
 @media screen and (max-width: 1024px) {
     .container {
@@ -244,15 +256,75 @@ Définition des class du header
 /*
 /*
 ===================================
-Design des boutons de l'application
+Design des Input
 ===================================
 */
 
+.contactForm>p
+{
+    padding: 1%;
+    margin: 0;
+    text-align: center;
+}
+.contactForm>p>a
+{
+    color: var(--color-white);
+}
+
+
+input, select, textarea {
+    width: 100%; /* Full width */
+    padding: 2%; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5%; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: .01%;/* Add a top margin */
+    margin-bottom: .01%; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+.submit {
+    background-color: var(--color-red);
+    color: black;
+    padding: 5% 6%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+:hover.submit{
+    background-color:#d1bcb3;
+}
 /*
 ================================
-Design des liens de listes
+Design des listes
 ================================
 */
+.listLine
+{
+    width: 10%;
+    border-color: var(--color-marron);
+}
+
+.listBox
+{
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.listElement
+{
+    display: flex;
+}
+
+.listAction
+{
+    display: flex;
+    flex-direction: column;
+    
+}
 
 :hover.navLink
 {
@@ -271,13 +343,13 @@ Design des liens de listes
     margin-bottom: 1%;
     width: 20%;
     border-radius: 3%;
+    transition: .3s;
     background-color: var(--color-red);
 }
 
 :hover.linkAdmin
 {
     background-color: var(--color-marron);
-    transition: .3s;
 }
 
 /*
@@ -286,16 +358,24 @@ Elements
 ================================
 */
 
+.btn
+{
+    padding: 2%;
+    background-color: var(--color-red);
+    text-align: center;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+:hover.btn
+{
+    background-color:#d1beb5;
+}
+
 .smlPic
 {
     height: 50px;
     width: 50px;
-}
-
-section
-{
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .elementBox
@@ -316,4 +396,10 @@ section
 .texte
 {
     text-align:center;
+}
+
+#profil
+{
+    background-color: var(--color-red);
+    padding: 2%;
 }
