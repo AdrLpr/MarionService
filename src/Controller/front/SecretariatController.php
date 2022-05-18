@@ -13,22 +13,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecretariatController extends AbstractController
 {
     #[Route("/secretariat", name:"app_secretariat_show")]
-    public function show(): Response
-    {
-        return $this->render("front/secretariat/show.html.twig");
-    }
-
-    #[Route("/secretariat/prestation", name:"app_secretariat_prestation")]
-    public function prestation(PrestationRepository $repositoryPresta): Response
+    public function show(PrestationRepository $repositoryPresta): Response
     {
         $prestations=$repositoryPresta->findByChoix(true);
-        return $this->render("front/secretariat/prestation.html.twig", [
+        return $this->render("front/secretariat/show.html.twig", [
             'prestations'=>$prestations
         ]);
     }
 
+    // #[Route("/secretariat#prestation", name:"app_secretariat_prestation")]
+    // public function prestation(PrestationRepository $repositoryPresta): Response
+    // {
+    //     $prestations=$repositoryPresta->findByChoix(true);
+    //     return $this->render("front/secretariat/show.html.twig", [
+    //         'prestations'=>$prestations
+    //     ]);
+    // }
+
     #[Route("/secretariat/tarif", name:"app_secretariat_tarif")]
-    public function tarif(TarifRepository $repositoryTarif): Response
+    public function tarif(TarifRepository $repositoryTarif, PrestationRepository $repositoryPresta): Response
     {
         $tarifs=$repositoryTarif->findByChoix(true);
         return $this->render("front/secretariat/tarif.html.twig", [

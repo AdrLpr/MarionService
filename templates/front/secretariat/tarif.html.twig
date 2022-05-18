@@ -4,10 +4,12 @@
 
     {% block content %}
     <h2> Secrétariat - Tarifs </h2>
+    <section>
         {% for tarif in tarifs %}
-            <div class="secre" style="border: black 1px solid">
+            <div class="secre elementBox">
                 <h3>{{tarif.titre}} </h3>
                 <p>{{tarif.texte}} {{tarif.prix}}€</p>
             </div>
         {% endfor %}
+    </section>
     {% endblock %}

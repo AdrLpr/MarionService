@@ -13,19 +13,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class SiteWebController extends AbstractController
 {
     #[Route("/siteWeb", name:"app_siteWeb_show")]
-    public function show(): Response
-    {
-        return $this->render("front/site_web/show.html.twig");
-    }
-
-    #[Route("/siteWeb/prestation", name:"app_siteWeb_prestation")]
-    public function prestation(PrestationRepository $repositoryPresta): Response
+    public function show(PrestationRepository $repositoryPresta): Response
     {
         $prestations=$repositoryPresta->findByChoix(false);
-        return $this->render("front/site_web/prestation.html.twig",[
+        return $this->render("front/site_web/show.html.twig",[
             'prestations'=>$prestations
         ]);
     }
+
+    // #[Route("/siteWeb/prestation", name:"app_siteWeb_prestation")]
+    // public function prestation(PrestationRepository $repositoryPresta): Response
+    // {
+    //     $prestations=$repositoryPresta->findByChoix(false);
+    //     return $this->render("front/site_web/prestation.html.twig",[
+    //         'prestations'=>$prestations
+    //     ]);
+    // }
 
     #[Route("/siteWeb/tarif", name:"app_siteWeb_tarif")]
     public function tarif(TarifRepository $repositoryTarif): Response
