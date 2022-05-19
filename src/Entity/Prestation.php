@@ -19,11 +19,11 @@ class Prestation
     #[ORM\Column(type: 'boolean')]
     private $choix;
 
-    #[ORM\Column(type: 'text')]
-    private $texte;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $texte;
 
     public function getId(): ?int
     {
@@ -55,18 +55,6 @@ class Prestation
         return $this;
     }
 
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    public function setTexte(string $texte): self
-    {
-        $this->texte = $texte;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -75,6 +63,18 @@ class Prestation
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getTexte(): ?string
+    {
+        return $this->texte;
+    }
+
+    public function setTexte(?string $texte): self
+    {
+        $this->texte = $texte;
 
         return $this;
     }
