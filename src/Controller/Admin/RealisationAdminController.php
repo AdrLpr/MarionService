@@ -50,7 +50,7 @@ class RealisationAdminController extends AbstractController
 
             try {
                 $imageFile->move(
-                    $this->getParameter('img_dir'),
+                    $this->getParameter('img_rea'),
                     $newFilename
                 );
             } catch (FileException $e)  

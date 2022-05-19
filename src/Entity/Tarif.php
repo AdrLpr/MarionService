@@ -14,13 +14,13 @@ class Tarif
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $titre;
+    private $duree;
 
     #[ORM\Column(type: 'float')]
     private $prix;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $texte;
+    private $tarifTemps;
 
     #[ORM\Column(type: 'boolean')]
     private $choix;
@@ -30,14 +30,14 @@ class Tarif
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getDuree(): ?string
     {
-        return $this->titre;
+        return $this->duree;
     }
 
-    public function setTitre(string $titre): self
+    public function setDuree(string $duree): self
     {
-        $this->titre = $titre;
+        $this->duree = $duree;
 
         return $this;
     }
@@ -54,14 +54,14 @@ class Tarif
         return $this;
     }
 
-    public function getTexte(): ?string
+    public function getTarifTemps(): ?string
     {
-        return $this->texte;
+        return $this->tarifTemps;
     }
 
-    public function setTexte(string $texte): self
+    public function setTarifTemps(string $tarifTemps): self
     {
-        $this->texte = $texte;
+        $this->tarifTemps = $tarifTemps;
 
         return $this;
     }

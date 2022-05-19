@@ -7,8 +7,8 @@
     <section>
         {% for tarif in tarifs %}
             <div class="secre elementBox">
-                <h3>{{tarif.titre}} </h3>
-                <p>{{tarif.texte}} {{tarif.prix}}€</p>
+                <h3>{{tarif.prix}} </h3>
+                <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}€</p>
             </div>
         {% endfor %}
     </section>

@@ -9,9 +9,11 @@ use App\Form\PrestationType;
 use App\Repository\PrestationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 //limite l'accès à la page aux admins
 // #[IsGranted('ROLE_ADMIN')]
@@ -28,17 +30,43 @@ class PrestationAdminController extends AbstractController
      }
 
      #[Route('/admin/prestation/create', name:'app_admin_prestation_create')]
-     public function create(PrestationRepository $repository, Request $request): Response
+     public function create(PrestationRepository $repository, Request $request, SluggerInterface $slugger): Response
      {
-        $form = $this->createForm(PrestationType::class);
+        $prestation = new Prestation();
+        $form = $this->createForm(PrestationType::class, $prestation);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $repository->add($form->getData());
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
             
+            //condition néccésaire parce l'input n'est pas required
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // néccésaire pour inclure de manière sécurisé le nom du fichier dans l'url
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+            
+                try {
+                    $imageFile->move(
+                        $this->getParameter('img_prestat'),
+                        $newFilename
+                    );
+                } catch (FileException $e)  
+                {
+                    // si il y a une erreur
+                }
+                
+                $prestation->setImage($newFilename);
+    
+                }
+
+            $repository->add($form->getData());
+
             return $this->redirectToRoute("app_admin_prestation_retrieve");
         }
+
 
         $formView = $form->createView();
         return $this->render('admin/prestation/create.html.twig', [

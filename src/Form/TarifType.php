@@ -17,24 +17,24 @@ class TarifType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('titre', TextType::class, [
-            'label' => 'Titre Tarif',
-            'required' => true
-        ])
+        
         ->add('prix', MoneyType::class, [
             'label' => 'Prix',
             'required' => true
+        ])->add('duree', TextType::class, [
+            'label' => 'Durée',
+            'required' => true
         ])
-        ->add('texte', TextareaType::class, [
+        ->add('tarifTemps', TextareaType::class, [
             'label' => 'Texte Tarif'
         ])
         ->add('choix', ChoiceType::class, [
-            'label' => 'Choix de la page',
+            'label' => 'Choix du type',
             'required' => true,
             'choices' => [
                 '---' => null,
-                'Secretariat'=> true,
-                'Site web'=>false,
+                '2h'=> true,
+                'Pour le mois'=>false,
             ]
         ])
         ->add('submit', SubmitType::class, [

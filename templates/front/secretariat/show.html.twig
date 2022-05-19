@@ -16,6 +16,7 @@
     <section>
         {% for prestation in prestations %}
             <div class="presta elementBox">
+                <img class="smlPic"src='{{asset('/uploads/prestation_img/' ~ prestation.image)}}'>
                 <h3>{{prestation.titre}} </h3>
                 <p>{{prestation.texte}} </p>
                 
@@ -23,8 +24,27 @@
         {% endfor %}
     </section>
 
+
     <h2 id="tarif"> Tarifs </h2>
+
+    <section>
+        <h3> prestation Ponctuelle à partir de 2h </h3> <br>
+        {% for tarif in tarifs2h %}
+            <div class="secre elementBox">
+                <h3>{{tarif.prix}} </h3>
+                <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}€</p>
+            </div>
+        {% endfor %}
+
+        <h3> prestation réccurente sur engagement d'un mois </h3>
+        {% for tarif in tarifsMois %}
+            <div class="secre elementBox">
+                <h3>{{tarif.prix}} </h3>
+                <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}€</p>
+            </div>
+        {% endfor %}
+    </section>
     
-    <a href="{{path('app_secretariat_tarif')}}">Lien vers les tarifs</a>
+    {# <a href="{{path('app_secretariat_tarif')}}">Lien vers les tarifs</a> #}
 
     {% endblock %}
