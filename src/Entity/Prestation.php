@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PrestationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PrestationRepository::class)]
@@ -13,35 +15,19 @@ class Prestation
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $titre;
-
     #[ORM\Column(type: 'boolean')]
     private $choix;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'object', nullable: true)]
     private $texte;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    public function getTitre(): ?string
-    {
-        return $this->titre;
-    }
-
-    public function setTitre(string $titre): self
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
 
     public function getChoix(): ?bool
     {
@@ -67,16 +53,18 @@ class Prestation
         return $this;
     }
 
-    public function getTexte(): ?string
+    public function getTexte()
     {
         return $this->texte;
     }
 
-    public function setTexte(?string $texte): self
+    public function setTexte($texte): self
     {
         $this->texte = $texte;
 
         return $this;
     }
+
+
 
 }

@@ -78,14 +78,23 @@ section {
     flex-wrap: wrap;
 }
 
+
+
 .column
 {
     flex-direction: column;
 }
 
+.white
+{
+    background-color: var(--color-white);
+}
+
 .contactForm {
     background-color: var(--color-grey);
 }
+
+
 
 @media screen and (max-width: 1024px) {
     .container {
@@ -295,9 +304,34 @@ input, select, textarea {
 }
 /*
 ================================
-Design des liens de listes
+Design des listes
 ================================
 */
+.listLine
+{
+    width: 10%;
+    border-color: var(--color-marron);
+}
+
+.listBox
+{
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.listElement
+{
+    display: flex;
+}
+
+.listAction
+{
+    display: flex;
+    flex-direction: column;
+    
+}
 
 :hover.navLink
 {
@@ -316,13 +350,13 @@ Design des liens de listes
     margin-bottom: 1%;
     width: 20%;
     border-radius: 3%;
+    transition: .3s;
     background-color: var(--color-red);
 }
 
 :hover.linkAdmin
 {
     background-color: var(--color-marron);
-    transition: .3s;
 }
 
 /*
@@ -330,6 +364,20 @@ Design des liens de listes
 Elements
 ================================
 */
+
+.btn
+{
+    padding: 2%;
+    background-color: var(--color-red);
+    text-align: center;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+:hover.btn
+{
+    background-color:#d1beb5;
+}
 
 .smlPic
 {
@@ -350,6 +398,12 @@ Elements
     flex-wrap: wrap;
     flex-direction: column;
     border-radius: 4%;
+}
+
+.tarif {
+    color:var(--color-brown);
+    width:auto;
+    padding: 1%;
 }
 
 .texte

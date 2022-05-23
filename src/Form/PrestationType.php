@@ -19,11 +19,7 @@ class PrestationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class, [
-                'label' => 'Titre Préstation',
-                'required' => true
-            ])
-            ->add('texte', CollectionType::class, [
+            ->add('texte', CollectionType::class, [ //crée un tableau et autorise de crée de nouvelles ligne de texte
                 'label' => 'Texte Présation',
                 'entry_type'=>TextType::class,
                 'entry_options' => [
@@ -31,17 +27,16 @@ class PrestationType extends AbstractType
                 ],
                 'allow_add' => true,
                 'prototype' => true,
-                'prototype_data' => 'texte',
-                'prototype_name' => 'texte',
+                'prototype_data' => '0',
+                
                 'required' => false,
-
-
+                'mapped'=> true
             ])
 
-            ->add('image', FileType::class , [
+            ->add('image', FileType::class , [ // ajoute les images
                 'label' => 'Image Expérience',
                 'mapped'=>false,
-                'required' => false,
+                'required' => false,// pour ne pas avoir les remette si update
                 'constraints' => [
                     new File ([
                         'maxSize'=> '1024k',

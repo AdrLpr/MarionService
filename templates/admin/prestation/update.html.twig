@@ -3,5 +3,42 @@
 {% block content %}
     <a href="{{path('app_admin_home_home')}}"> Retour au menu Admin </a>
 
-    {{form(formView)}}
+    {{ form_start(form) }}
+
+
+            {{ form_label(form.titre) }}
+            {{ form_errors(form.titre) }}
+            {{ form_widget(form.titre) }}
+
+            {{ form_label(form.image) }}
+            {{ form_errors(form.image) }}
+            {{ form_widget(form.image) }}
+
+            {{ form_label(form.choix) }}
+            {{ form_errors(form.choix) }}
+            {{ form_widget(form.choix) }}
+            
+            
+            
+    {{ form_label(form.texte) }}        
+    {# store the prototype on the data-prototype attribute #}
+    <ul id="texte-fields-list"
+        data-prototype="{{ form_widget(form.texte.vars.prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ form.texte|length }}">
+
+    {% for texteField in form.texte %}
+        <li>
+            {{ form_errors(texteField) }}
+            {{ form_widget(texteField) }}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <button type="button"
+        class="add-another-collection-widget"
+        data-list-selector="#texte-fields-list">Add another texte</button>
+
+    
+{{ form_end(form) }}
 {% endblock %}
