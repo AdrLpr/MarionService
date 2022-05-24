@@ -17,6 +17,10 @@ class ContactType extends AbstractType
             ->add('lastName',TextType::class, [
                 'label'=>'Nom'
             ])
+            ->add('objet', TextType::class,[
+                'label'=>'Objet',
+                'mapped' => false
+            ])
             ->add('email',EmailType::class, [
             ])
             ->add('message', TextareaType::class, [

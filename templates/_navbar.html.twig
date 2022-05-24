@@ -22,5 +22,10 @@
         <li><a class="navLink" href="{{path('app_contact_show')}}">
             Contact
         </a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+        <li><a class="navLink" href="{{path('app_admin_home_home')}}">
+            Admin
+        </a></li>
+        {% endif %}
 </ul>
 

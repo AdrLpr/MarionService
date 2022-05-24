@@ -30,7 +30,7 @@ class ContactController extends AbstractController
             $message = (new Email())
                 ->from($contactFormData['email'])
                 ->to('adrien.leprince02@live.fr')
-                ->subject('vous avez reçu un email')
+                ->subject($contactFormData['objet'])
                 ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
                     $contactFormData['message'],
                     'text/plain');

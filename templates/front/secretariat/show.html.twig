@@ -4,23 +4,27 @@
 
     {% block content %}
     <h2> Secrétariat </h2>
-    <section class="white">
-    <p> Pourquoi me choisir pour la création de votre site internet via WordPress ?
-    Un site Web pour votre entreprise facilite la promotion de vos produits et services. Une page Facebook ne suffit pas ! N’oubliez pas que vos concurrents ont sûrement déjà un site web.
-    C’est pour cela que je vous propose mes services pour réaliser votre site internet via WordPress.
-    Tout d’abord il faut savoir que Wordpress existe depuis 2003. C’est une plate-forme open source soutenue par une large communauté. Wordpress représente 60% des parts de marché dans le CMS. 30% des sites web dans le monde sont faits avec WordPress. 
-    Je serai à l’écoute de vos attentes et vous fournirez un suivi régulier sur l’avancement du projet.</p>
+    <section class="white noShadow">
+    <span class="bold fontHeight">Pourquoi me choisir pour la création de votre site internet via WordPress ?</span><br>
+    <p> Un site Web pour votre entreprise facilite la promotion de vos produits et services. Une page Facebook ne suffit pas ! N’oubliez pas que vos concurrents ont sûrement déjà un site web.
+    C’est pour cela que je vous propose mes services pour réaliser votre site internet via WordPress. </p> 
+
+    <p>Tout d’abord il faut savoir que Wordpress existe depuis 2003. C’est une plate-forme open source soutenue par une large communauté. Wordpress représente 60% des parts de marché dans le CMS. 30% des sites web dans le monde sont faits avec WordPress. 
+    <span class="bold">Je serai à l’écoute de vos attentes et vous fournirez un suivi régulier sur l’avancement du projet. </span></p>
     </section>
 
     <h2 id="prestation"> Services </h2>
     <section>
         {% for prestation in prestations %}
-            <div class="presta elementBox">
-                <img class="smlPic"src='{{asset('/uploads/prestation_img/' ~ prestation.image)}}'>
+            <div class="presta elementBox" >
+                <div>
+                <img class="bigPic" src='{{asset('/uploads/prestation_img/' ~ prestation.image)}}'>
+                </div>
+                <div class="texte" style="padding-bottom:1%">
                 {% for ligne in prestation.texte %}
                     {{ligne}} <br>
                 {% endfor %}
-                
+                </div>
             </div>
         {% endfor %}
     </section>
@@ -28,21 +32,21 @@
 
     <h2 id="tarif"> Tarifs </h2>
 
-    <section style="display:block">
-        <h3> prestation Ponctuelle à partir de 2h </h3>
-        <section>
+    <section style="display:block" class="texte">
+        <h3> Prestation ponctuelle à partir de 2h de travail par jour </h3>
+        <section class="noShadow">
         {% for tarif in tarifs2h %}
             <div class="tarif elementBox texte" >
-                <h3>{{tarif.prix}} </h3>
-                <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}€</p>
+                <h3>{{tarif.prix}}€ </h3>
+                <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}</p>
             </div>
         {% endfor %}
         </section>
-        <h3> prestation réccurente sur engagement d'un mois </h3>
-        <section>
+        <h3> Prestation récurrente sur engagement d'un mois </h3>
+        <section class="noShadow">
         {% for tarif in tarifsMois %}
             <div class="tarif elementBox texte" >
-                <h3>{{tarif.prix}} </h3>
+                <h3>{{tarif.prix}}€ </h3>
                 <p>{{tarif.duree}} <br>{{tarif.tarifTemps}}€</p>
             </div>
         {% endfor %}

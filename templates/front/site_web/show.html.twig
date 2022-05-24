@@ -4,7 +4,7 @@
 
     {% block content %}
     <h2> SiteWeb </h2>
-    <section class="white">
+    <section class="white noShadow">
     <p> Pourquoi me choisir pour la création de votre site internet via WordPress ?
     Un site Web pour votre entreprise facilite la promotion de vos produits et services. Une page Facebook ne suffit pas ! N’oubliez pas que vos concurrents ont sûrement déjà un site web.
     C’est pour cela que je vous propose mes services pour réaliser votre site internet via WordPress.
@@ -16,9 +16,14 @@
     <section>
         {% for prestation in prestations %}
             <div class="presta elementBox">
-                <h3>{{prestation.titre}} </h3>
-                <p>{{prestation.texte}} </p>
-                
+                <div>
+                <img class="bigPic" src='{{asset('/uploads/prestation_img/' ~ prestation.image)}}'>
+                </div>
+                <div class="texte" style="padding-bottom:1%">
+                {% for ligne in prestation.texte %}
+                    {{ligne}} <br>
+                {% endfor %}
+                </div>
             </div>
         {% endfor %}
     </section>

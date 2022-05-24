@@ -5,9 +5,10 @@ Définition des Variables CSS
 */
 :root {
     --color-white: #f5efe6;
-    --color-marron: #c49d83 ;
+    --color-marron: #d4aa8d ;
+    --color-marron2: #f5dac3 ;
     --color-brown:#BDA18A;
-    --color-red: #E8D5CC;
+    --color-red: #f8e1d6;
     --color-grey: #D5CABC;
     --base-font-size: 18px;
   }
@@ -71,14 +72,29 @@ a {
 }
 
 section {
-    background-color: var(--color-marron);
+    background-color: var(--color-marron2);
     display: flex;
     justify-content: space-around;
     padding: 1%;
     flex-wrap: wrap;
+    border-radius: 1%;    
+    backdrop-filter: blur(10);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 }
-.tarif {
-    color:'white',
+
+.noShadow
+{
+    box-shadow: 0 0 0 0;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.fontHeight
+{
+    font-size: larger;
 }
 
 .column
@@ -101,7 +117,15 @@ section {
     .container {
       width: 100%;
     }
+
+
+    
+    .elementBox {
+        width: 100%;
+        display: block;
+    }
 }
+
 
 /*
 ====================
@@ -386,19 +410,33 @@ Elements
     width: 50px;
 }
 
+.bigPic
+{
+    height: 30vh;
+    width: 100%;
+    border-radius: 4%;
+}
+
 .elementBox
 {
     margin-top: 1%;
     margin-bottom: 1%;
-    padding-top: 1%;
     display: flex;
     background-color: var(--color-red);
     width: 49%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: column;
     border-radius: 4%;
+    backdrop-filter: blur(10);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+
+.tarif {
+    
+    width:auto;
+    padding: 1%;
 }
 
 .texte

@@ -28,7 +28,7 @@ class PrestationType extends AbstractType
                 'allow_add' => true,
                 'prototype' => true,
                 'prototype_data' => '0',
-                
+                'prototype_name' => '0',
                 'required' => false,
                 'mapped'=> true
             ])

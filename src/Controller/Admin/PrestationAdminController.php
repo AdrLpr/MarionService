@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 //limite l'accès à la page aux admins
-// #[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_ADMIN')]
 class PrestationAdminController extends AbstractController
 {
     #[Route('/admin/prestation', name:'app_admin_prestation_retrieve')]
