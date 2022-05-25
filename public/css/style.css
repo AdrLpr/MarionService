@@ -8,8 +8,8 @@ Définition des Variables CSS
     --color-marron: #d4aa8d ;
     --color-marron2: #f5dac3 ;
     --color-brown:#BDA18A;
-    --color-red: #f8e1d6;
-    --color-grey: #D5CABC;
+    --color-red: #FFF1E6;
+    --color-grey: #c4baad;
     --base-font-size: 18px;
   }
 
@@ -162,6 +162,8 @@ Définition des class du header
 -Entete-
 */
 .header .entete {
+    position:absolute;
+    right: 5px;
     display: flex;
   justify-content: space-between;
   background-color: var(--color-white);
@@ -376,7 +378,7 @@ Design des listes
     width: 20%;
     border-radius: 3%;
     transition: .3s;
-    background-color: var(--color-red);
+    background-color: var(--color-marron2);
 }
 
 :hover.linkAdmin
