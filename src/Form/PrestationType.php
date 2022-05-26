@@ -23,7 +23,7 @@ class PrestationType extends AbstractType
                 'label' => 'Texte Présation',
                 'entry_type'=>TextType::class,
                 'entry_options' => [
-                    'attr'=> ['class' => 'email_box'],
+                    'attr'=> ['class' => 'texte_box'],
                 ],
                 'allow_add' => true,
                 'prototype' => true,
